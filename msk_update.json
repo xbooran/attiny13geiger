@@ -39,104 +39,6 @@
               ]
             }
           },
-          "allOf": [
-            {
-              "if": {
-                "properties": {
-                  "flavor": {
-                    "const": "m1.large"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "db_disk_size": {
-                    "type": "integer",
-                    "title": "Размер диска базы данных, ГБ",
-                    "enum": [
-                      16
-                    ],
-                    "default": 16
-                  }
-                },
-                "required": [
-                  "db_disk_size"
-                ]
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "flavor": {
-                    "const": "r1.large"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "db_disk_size": {
-                    "type": "integer",
-                    "title": "Размер диска базы данных, ГБ",
-                    "enum": [
-                      32
-                    ],
-                    "default": 32
-                  }
-                },
-                "required": [
-                  "db_disk_size"
-                ]
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "flavor": {
-                    "const": "r1.xlarge"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "db_disk_size": {
-                    "type": "integer",
-                    "title": "Размер диска базы данных, ГБ",
-                    "enum": [
-                      64
-                    ],
-                    "default": 64
-                  }
-                },
-                "required": [
-                  "db_disk_size"
-                ]
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "flavor": {
-                    "const": "r1.2xlarge"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "db_disk_size": {
-                    "type": "integer",
-                    "title": "Размер диска базы данных, ГБ",
-                    "enum": [
-                      128
-                    ],
-                    "default": 128
-                  }
-                },
-                "required": [
-                  "db_disk_size"
-                ]
-              }
-            }
-          ],
           "required": [
             "flavor"
           ]
@@ -153,5 +55,23 @@
         "type_action_change"
       ]
     }
+    {
+      "title": "Увеличить обьем диска",
+      "properties": {
+        "db_disk_size": {
+          "type": "integer",
+          "title": "Размер диска базы данных, ГБ",
+             "enum": [
+                      16
+                    ],
+                    "default": 16
+                  }
+                },
+                "required": [
+                  "db_disk_size"
+                ]
+        }
+
+    
   ]
 }
