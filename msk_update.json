@@ -1,0 +1,157 @@
+{
+  "type": "object",
+  "title": "Выберите действие",
+  "oneOf": [
+    {
+      "title": "Изменить flavor",
+      "properties": {
+        "vm": {
+          "type": "object",
+          "title": "Виртуальная машина",
+          "properties": {
+            "flavor": {
+              "type": "string",
+              "title": "Тип виртуальной машины",
+              "description": "В процессе смены flavor инсталляция будет перезагружена.",
+              "enumNames": [
+                "m1.xlarge - 4 vCPU 16 Gb RAM",
+                "m1.4xlarge - 16 vCPU 64 Gb RAM",
+                "m1.2xlarge - 8 vCPU 32 Gb RAM",
+                "c1.xlarge - 4 vCPU 8 Gb RAM",
+                "c1.2xlarge - 8 vCPU 16 Gb RAM",
+                "c1.4xlarge - 16 vCPU 32 Gb RAM",
+                "c1.8xlarge - 32 vCPU 64 Gb RAM",
+                "r1.2xlarge -  8 vCPU 64 Gb RAM",
+                "r1.4xlarge -  16 vCPU 128 Gb RAM",
+                "r1.6xlarge -  24 vCPU 256 Gb RAM"
+              ],
+              "enum": [
+                "m1.xlarge",
+                "m1.4xlarge",
+                "m1.2xlarge",
+                "c1.xlarge",
+                "c1.2xlarge",
+                "c1.4xlarge",
+                "c1.8xlarge",
+                "r1.2xlarge",
+                "r1.4xlarge",
+                "r1.6xlarge"
+              ]
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "flavor": {
+                    "const": "m1.large"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "db_disk_size": {
+                    "type": "integer",
+                    "title": "Размер диска базы данных, ГБ",
+                    "enum": [
+                      16
+                    ],
+                    "default": 16
+                  }
+                },
+                "required": [
+                  "db_disk_size"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "flavor": {
+                    "const": "r1.large"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "db_disk_size": {
+                    "type": "integer",
+                    "title": "Размер диска базы данных, ГБ",
+                    "enum": [
+                      32
+                    ],
+                    "default": 32
+                  }
+                },
+                "required": [
+                  "db_disk_size"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "flavor": {
+                    "const": "r1.xlarge"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "db_disk_size": {
+                    "type": "integer",
+                    "title": "Размер диска базы данных, ГБ",
+                    "enum": [
+                      64
+                    ],
+                    "default": 64
+                  }
+                },
+                "required": [
+                  "db_disk_size"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "flavor": {
+                    "const": "r1.2xlarge"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "db_disk_size": {
+                    "type": "integer",
+                    "title": "Размер диска базы данных, ГБ",
+                    "enum": [
+                      128
+                    ],
+                    "default": 128
+                  }
+                },
+                "required": [
+                  "db_disk_size"
+                ]
+              }
+            }
+          ],
+          "required": [
+            "flavor"
+          ]
+        },
+        "type_action_change": {
+          "type": "integer",
+          "default": 1,
+          "title": "Служебная переменная",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "vm",
+        "type_action_change"
+      ]
+    }
+  ]
+}
